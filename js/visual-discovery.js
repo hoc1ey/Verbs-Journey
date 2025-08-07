@@ -3,17 +3,78 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1) Data: titles, image paths, questions (answers to be filled later)
     const images = [
-        { title: 'Nature Scene',       src: '../img/IMG1.jpeg', alt: 'Nature Scene',       q: 'What do you see in this image?', a: '' },
-        { title: 'City Skyline',       src: '../img/IMG2.jpeg', alt: 'City Skyline',       q: 'What do you see in this image?', a: '' },
-        { title: 'Mountain View',      src: '../img/IMG3.jpeg', alt: 'Mountain View',      q: 'What do you see in this image?', a: '' },
-        { title: 'Tropical Beach',     src: '../img/IMG4.jpeg', alt: 'Tropical Beach',     q: 'What do you see in this image?', a: '' },
-        { title: 'Desert Landscape',   src: '../img/IMG5.jpeg', alt: 'Desert Landscape',   q: 'What do you see in this image?', a: '' },
-        { title: 'Forest Path',        src: '../img/IMG6.jpeg', alt: 'Forest Path',        q: 'What do you see in this image?', a: '' },
-        { title: 'Underwater Reef',    src: '../img/IMG7.jpeg', alt: 'Underwater Reef',    q: 'What do you see in this image?', a: '' },
-        { title: 'Snowy Mountain',     src: '../img/IMG8.jpeg', alt: 'Snowy Mountain',     q: 'What do you see in this image?', a: '' },
-        { title: 'Autumn Leaves',      src: '../img/IMG9.jpeg', alt: 'Autumn Leaves',      q: 'What do you see in this image?', a: '' },
-        { title: 'Starry Night',       src: '../img/IMG10.jpeg', alt: 'Starry Night',      q: 'What do you see in this image?', a: '' },
+        {
+            title: "Couple in Paris",
+            src: "../img/IMG1.jpeg",
+            alt: "A young couple smiles while taking a selfie in front of the Eiffel Tower. The woman is holding a map and the man extends his arm with a phone, enjoying their visit to Paris.",
+            q: "What do you see in this image?",
+            a: "They are tourists enjoying their time in Paris, taking a selfie in front of the Eiffel Tower."
+        },
+        {
+            title: "Frustrated Teen Indoors",
+            src: "../img/IMG2.jpeg",
+            alt: "A young man stands with his arms crossed and a frustrated expression, looking away while a woman works in the background. The scene takes place indoors with warm tones.",
+            q: "What do you see in this image?",
+            a: "The boy is clearly upset, possibly after an argument or frustration with the situation around him."
+        },
+        {
+            title: "Angry Dishwashing",
+            src: "../img/IMG3.jpeg",
+            alt: "A woman with an angry expression washes dishes at the sink. She holds a plate and sponge under running water in a simple kitchen with tiled walls.",
+            q: "What do you see in this image?",
+            a: "She is reluctantly washing the dishes, visibly angry, perhaps after being forced to do so."
+        },
+        {
+            title: "Team Collaboration",
+            src: "../img/IMG4.jpeg",
+            alt: "Three coworkers sit around a round table collaborating. They are using notebooks and a laptop, smiling and actively participating in a team discussion.",
+            q: "What do you see in this image?",
+            a: "The team is actively collaborating in a positive environment, working together on a task."
+        },
+        {
+            title: "Sad Earth, Worried Boy",
+            src: "../img/IMG5.jpeg",
+            alt: "A cartoon Earth with a sad face stands on cracked ground next to a worried boy covering his face. The scene symbolizes concern over environmental issues.",
+            q: "What do you see in this image?",
+            a: "The Earth appears sad and the boy worried, symbolizing global concern for environmental problems."
+        },
+        {
+            title: "Chris Going Out",
+            src: "../img/IMG6.jpeg",
+            alt: "A young man named Chris smiles and waves as he steps out of a brick building. He carries a crossbody bag and looks happy to go out.",
+            q: "What do you see in this image?",
+            a: "Chris is happily stepping outside, maybe going to meet someone or explore the city."
+        },
+        {
+            title: "Seeing Homelessness",
+            src: "../img/IMG7.jpeg",
+            alt: "A sad woman walks past a homeless man sitting on the sidewalk with his dog. She covers her mouth in shock while the man sits quietly on a blanket.",
+            q: "What do you see in this image?",
+            a: "The woman is emotionally affected by seeing the homeless man and his dog, feeling empathy and sorrow."
+        },
+        {
+            title: "Focused Study Time",
+            src: "../img/IMG8.jpeg",
+            alt: "A girl sits at her desk, focused on writing in an open notebook. There are stacked books and a desk lamp illuminating the scene.",
+            q: "What do you see in this image?",
+            a: "The girl is deeply focused on her studies, showing dedication and discipline."
+        },
+        {
+            title: "Meeting Postponed",
+            src: "../img/IMG9.jpeg",
+            alt: "A man in a suit points at a flip chart showing a clock, during a meeting. Two colleagues are seated, and the board says 'Meeting,' indicating a decision to postpone it.",
+            q: "What do you see in this image?",
+            a: "The man is pointing out the clock to announce that the meeting is being postponed."
+        },
+        {
+            title: "Reading a Mystery Novel",
+            src: "../img/IMG10.jpeg",
+            alt: "A smiling woman sits and reads a mystery novel. The book cover reads 'Mystery' with a magnifying glass icon, and she looks content and focused.",
+            q: "What do you see in this image?",
+            a: "She is enjoying reading a mystery novel, likely intrigued by the story and plot twists."
+        }
     ];
+
 
     // 2) Selectors
     const tiles               = document.querySelectorAll('#image-game-board [data-tile]');
@@ -141,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('keydown', trapTabKey);
 
         // Focus check button
-        showAnswerBtn.focus();
+        imageQuestionTitle.focus();
     }
 
     // 7) Close image modal
