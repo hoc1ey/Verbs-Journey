@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Board - Bamboozle</title>
+
+    <!-- CSS -->
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/video-fixes.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+</head>
+<body class="min-h-screen">
+
+<!-- Skip link -->
+<a href="#main-content" class="skip-to-content" tabindex="0">Saltar al contenido principal</a>
+<div id="sr-live-region" class="sr-live-region" aria-live="polite" aria-atomic="true" tabindex="0"></div>
+
+<!-- Navegación -->
+<header class="header" role="banner">
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="flex items-center space-x-8">
+            <a href="game-main.html" class="nav-brand hover:opacity-70" aria-label="Página principal" tabindex="0">
+                <span class="sr-only">Ir a la página principal</span>
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" focusable="false">
+                    <path d="M2.12499 15.8749H3.49999V25.4999C3.49999 27.0124 4.73749 28.2499 6.24999 28.2499H22.75C24.2625 28.2499 25.5 27.0124 25.5 25.4999V15.8749H26.875C27.425 15.8749 27.9337 15.5449 28.14 15.0224C28.3462 14.5137 28.2362 13.9224 27.8375 13.5237L15.4762 1.14869C15.349 1.02123 15.1979 0.920097 15.0316 0.851098C14.8653 0.782098 14.6869 0.746582 14.5069 0.746582C14.3268 0.746582 14.1485 0.782098 13.9821 0.851098C13.8158 0.920097 13.6647 1.02123 13.5375 1.14869L1.14874 13.5237C0.749992 13.9224 0.639992 14.5137 0.846242 15.0224C1.05249 15.5312 1.56124 15.8749 2.11124 15.8749H2.12499ZM14.5 4.06369L22.75 12.3137V25.4999H6.24999V12.3137L14.5 4.06369Z"
+                          fill="#ECECEC"/>
+                </svg>
+            </a>
+            <div class="nav-links" role="menu">
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Games</a>
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Blog</a>
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Class PIN</a>
+            </div>
+        </div>
+        <div class="nav-links" role="menu">
+            <a href="#" class="nav-link" role="menuitem" tabindex="0">Sign in</a>
+            <a href="#" class="btn btn-rounded bg-accessible-blue" style="color: #fff;" role="button" tabindex="0">
+                Join for Free
+            </a>
+        </div>
+        <button id="hamburger-btn" class="hamburger" aria-label="Abrir menú móvil" role="button" tabindex="0">☰</button>
+    </nav>
+</header>
+
+<!-- Controles Superior -->
+<div class="bg-bam-purple text-white py-4 px-6" role="region" aria-label="Controles del juego">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+        <div class="flex items-center space-x-2 justify-center md:justify-start">
+            <span class="font-bold" tabindex="0">Controls:</span>
+            <button class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    onclick="window.location.href='game-main.html'"
+                    aria-label="Salir del juego" role="button" tabindex="0">&times;
+            </button>
+            <button id="sound-toggle" class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    aria-pressed="false" aria-label="Activar/desactivar sonido" role="button" tabindex="0">🔊
+            </button>
+            <button id="fullscreen-toggle" class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    aria-pressed="false" aria-label="Alternar pantalla completa" role="button" tabindex="0">📺
+            </button>
+        </div>
+        <div class="text-center">
+            <h1 class="text-4xl font-bold" tabindex="0">🎬 Video Challenge</h1>
+            <p id="game-title" class="font-semibold" tabindex="0">Interactive Video Learning Game</p>
+        </div>
+        <div class="text-center md:text-right">
+            <div id="video-timer" class="text-xl font-bold bg-white/20 px-4 py-2 rounded-lg hidden"
+                 aria-hidden="true" tabindex="-1">
+                ⏱️ <span id="timer-display">00:00</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Puntuaciones -->
+<div class="bg-bam-purple-dark text-white py-4 px-6" role="region" aria-label="Marcador de equipos">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+        <div class="flex items-center justify-center md:justify-start space-x-2">
+            <span class="font-bold" tabindex="0">Edit teams:</span>
+            <button class="btn btn-icon btn-sm hover:bg-white/20" aria-label="Editar equipos" role="button"
+                    tabindex="0">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379
+                     5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="flex justify-center items-end space-x-8">
+            <div id="team1-container" class="text-center" aria-live="polite">
+                <div class="bg-bam-pink text-white px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team1-name">Team 1</span>
+                </div>
+                <div class="font-bold text-3xl text-bam-yellow" tabindex="0">
+                    <span id="team1-score">0 points</span>
+                </div>
+            </div>
+            <div id="team2-container" class="text-center" aria-live="polite">
+                <div class="bg-bam-blue text-white px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team2-name">Team 2</span>
+                </div>
+                <div class="font-bold text-3xl text-bam-yellow" tabindex="0">
+                    <span id="team2-score">0 points</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center md:justify-end space-x-2">
+            <button id="pause-all-videos" class="btn btn-sm bg-white/20 hover:bg-white/30 text-white"
+                    aria-label="Pausar todos los videos" role="button" tabindex="0">
+                ⏸️ Pause All
+            </button>
+            <button id="replay-video" class="btn btn-sm bg-white/20 hover:bg-white/30 text-white hidden"
+                    aria-label="Repetir video" role="button" aria-hidden="true" tabindex="-1">
+                🔄 Replay
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Tablero de Videos -->
+<main id="main-content" role="main" class="bg-gradient-to-b from-purple-100 to-blue-100 p-4 md:p-8 min-h-screen">
+    <div class="container">
+        <div class="text-center mb-6">
+            <p class="text-gray-700 mb-2 text-lg" tabindex="0">
+                Current turn: <span id="current-team" class="font-bold text-purple-600">Team 1</span>
+            </p>
+            <p class="text-gray-600 mb-4" tabindex="0">
+                🎬 Presiona un video para verlo y responder.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button id="restart-button" class="btn btn-danger" aria-label="Reiniciar juego" role="button"
+                        onclick="window.location.href='video-challenge.html'"
+                        tabindex="0">
+                    🔄 Restart Game
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='../index.html'"
+                        aria-label="Volver a configuración" role="button" tabindex="0">
+                    ⬅️ Back to Setup
+                </button>
+            </div>
+        </div>
+
+        <div id="video-game-board" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Video 1 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 1: Introducción (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 1</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <!-- Video 2 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 2: Historia (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 2</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <!-- Video 3 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 3: Ejemplos (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 3</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <!-- Video 4 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 4: Práctica (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 4</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <!-- Video 5 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 5: Resumen (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 5</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <!-- Video 6 -->
+            <div
+                    role="button"
+                    tabindex="0"
+                    aria-label="Video 6: Despedida (15 puntos)"
+                    class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-6 text-white shadow-lg hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center transition-all hover:scale-105"
+            >
+                <div class="text-6xl mb-4" aria-hidden="true">🎬</div>
+                <h3 class="font-bold text-xl mb-2 text-center" tabindex="0">Video 6</h3>
+                <p class="text-sm opacity-90 text-center mb-4" tabindex="0">Click to watch video</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full" tabindex="0">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading-videos" class="text-center py-8 hidden" aria-hidden="true">
+            <div class="loading-spinner mx-auto mb-4" aria-hidden="true"></div>
+            <p class="text-gray-600" tabindex="0">Cargando videos...</p>
+        </div>
+
+    </div>
+</main>
+
+<!-- Video Modal -->
+<div id="video-modal" class="modal-backdrop hidden"
+     role="dialog" aria-modal="true" aria-labelledby="video-modal-title" tabindex="-1">
+    <!-- ...igual que antes... -->
+</div>
+
+<!-- Menú móvil -->
+<div id="mobile-menu"
+     class="mobile-menu"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Menú móvil"
+     tabindex="0">
+    <button id="close-menu-btn"
+            class="mobile-menu-close"
+            aria-label="Cerrar menú móvil"
+            role="button"
+            tabindex="0">&times;
+    </button>
+    <nav class="mobile-menu-links"
+         role="navigation"
+         aria-label="Enlaces menú móvil">
+        <a href="#" class="mobile-menu-link" tabindex="0">Games</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Blog</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Class PIN</a>
+        <hr class="border-gray-600 my-4" tabindex="0"/>
+        <a href="#" class="mobile-menu-link" tabindex="0">Sign in</a>
+        <a href="#" class="btn btn-primary btn-rounded text-center" role="button" tabindex="0">Join for Free</a>
+    </nav>
+</div>
+
+<!-- Video Question Modal -->
+<div
+        id="video-question-modal"
+        class="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black bg-opacity-50 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="video-question-title"
+        style="display: none !important;"
+        tabindex="-1"
+>
+    <div
+            class="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+            role="document"
+    >
+        <!-- Header -->
+        <header class="flex items-center justify-between bg-purple-700 text-white px-6 py-4">
+            <h2 id="video-question-title" class="flex items-center gap-2 text-xl font-bold" tabindex="0">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 5v14l16-7z"/>
+                </svg>
+                Video 1 — Team 1
+            </h2>
+            <button
+                    type="button"
+                    class="text-2xl leading-none focus:outline-none focus:ring-2 focus:ring-white"
+                    aria-label="Cerrar modal"
+                    tabindex="0"
+            >&times;</button>
+        </header>
+
+        <!-- Body -->
+        <div class="space-y-6 p-6">
+            <!-- YouTube Embed -->
+            <div class="aspect-w-16 aspect-h-9 bg-black">
+                <iframe
+                        id="question-video-iframe"
+                        width="720"
+                        height="400"
+                        src=""
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Video question"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        tabindex="0"
+                ></iframe>
+            </div>
+
+            <!-- Question -->
+            <section aria-labelledby="video-question-label" tabindex="0">
+                <h3 id="video-question-label" class="text-lg font-semibold text-purple-800 mb-2">
+                    Question about the video:
+                </h3>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <p id="video-question-text" class="text-gray-800">
+                        What is the main topic discussed in this video?
+                    </p>
+                </div>
+            </section>
+
+            <!-- Nuevo botón: Ver / Ocultar transcripción -->
+            <div class="text-center">
+                <button
+                        id="toggle-transcript-btn"
+                        class="btn btn-secondary btn-lg inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                        aria-expanded="false"
+                        aria-controls="video-transcript-section"
+                        tabindex="0"
+                >
+                    📄 Ver transcripción
+                </button>
+            </div>
+
+            <!-- Sección de transcripción -->
+            <section
+                    id="video-transcript-section"
+                    class="hidden bg-gray-50 p-4 rounded-lg"
+                    aria-hidden="true"
+                    tabindex="0"
+            >
+                <!-- Aquí insertas la transcripción -->
+                <p>
+                    [Transcripción del video…]
+                </p>
+            </section>
+
+            <!-- Show Answer Button -->
+            <div class="text-center">
+                <button
+                        id="show-video-answer-btn"
+                        class="btn btn-primary btn-lg inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                        aria-expanded="false"
+                        aria-controls="video-answer-section"
+                        tabindex="0"
+                >
+                    🎯 Show Answer
+                </button>
+            </div>
+
+            <!-- Answer + Transcript Toggle + Correct/Incorrect -->
+            <section
+                    id="video-answer-section"
+                    class="hidden space-y-4"
+                    aria-hidden="true"
+                    tabindex="-1"
+            >
+                <!-- Respuesta correcta -->
+                <h4 class="text-xl font-bold text-green-800" tabindex="0">Correct Answer:</h4>
+                <div class="bg-green-50 p-4 rounded-lg" tabindex="0">
+                    <p id="video-answer-text" class="text-green-800">
+                        Sustainable development is about meeting the needs of the present without compromising future generations.
+                    </p>
+                </div>
+
+                <!-- Botones Correct / Incorrect -->
+                <div class="flex justify-center gap-4">
+                    <button
+                            id="video-correct-btn"
+                            class="btn btn-success btn-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                            tabindex="0"
+                    >✅ Correct (+15 pts)
+                    </button>
+                    <button
+                            id="video-incorrect-btn"
+                            class="btn btn-danger btn-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                            tabindex="0"
+                    >❌ Incorrect (0 pts)
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/video-challenge.js"></script>
+
+</body>
+</html>

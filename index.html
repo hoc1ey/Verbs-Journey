@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Verb Journey - Bamboozle</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/components.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body class="min-h-screen">
+<a href="#main-content" class="skip-to-content" tabindex="0">Saltar al contenido principal</a>
+<div id="sr-live-region" class="sr-live-region" aria-live="polite" aria-atomic="true" tabindex="0"></div>
+<header class="header">
+    <nav class="nav" aria-label="Main navigation">
+        <div class="flex items-center space-x-8">
+            <a href="index.html" class="nav-brand hover:opacity-70" tabindex="0">
+                <span class="sr-only">Ir a la página principal</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+            </a>
+            <div class="nav-links" role="navigation" aria-label="Site links">
+                <a href="#" class="nav-link" tabindex="0">Games</a>
+                <a href="#" class="nav-link" tabindex="0">Blog</a>
+                <a href="#" class="nav-link" tabindex="0">Class PIN</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link" tabindex="0">Sign in</a>
+            <a href="#" class="btn btn-rounded bg-accessible-blue" style="color: #fff; opacity: 1;" tabindex="0">
+                Join for Free
+            </a>
+        </div>
+        <button id="hamburger-btn" class="hamburger" aria-label="Open mobile menu">☰</button>
+    </nav>
+</header>
+<div class="bg-bam-yellow text-bam-dark p-6" tabindex="0" aria-label="Page title and description">
+    <div class="container flex justify-between items-center flex-wrap gap-4">
+        <div>
+            <h1 id="game-title" class="text-4xl font-bold" tabindex="0">The Verb Journey</h1>
+            <p class="font-semibold" tabindex="0">Verbs followed by gerunds or infinitive (no diff...)</p>
+        </div>
+    </div>
+</div>
+<main id="main-content" role="main" class="container grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8">
+    <aside class="lg:col-span-1 space-y-6" aria-label="Command Center">
+        <div class="card" tabindex="0">
+            <div class="card-header">
+                <div class="flex items-center gap-2">
+                    <h2 class="card-title" tabindex="0">Command Center:</h2>
+                    <div class="help-tooltip tooltip-right" tabindex="0" aria-label="Game Control Hub help">
+                        <div class="help-circle" aria-hidden="true">?</div>
+                        <div class="tooltip-content" tabindex="0">
+                            <strong>Game Control Hub</strong><br>
+                            From here you can manage your entire game experience:<br><br>
+                            <strong>Game Code:</strong> Share with other players to join<br>
+                            <strong>Play:</strong> Start the game with different game modes<br>
+                            <strong>Study:</strong> Practice questions individually<br>
+                            <strong>Share:</strong> Get shareable link for your game
+                        </div>
+                    </div>
+                </div>
+                <p class="card-subtitle" tabindex="0">Press the buttons to do something.</p>
+            </div>
+            <div class="card-body">
+                <div class="help-tooltip tooltip-right" >
+                    <div class="bg-bam-blue text-white rounded-lg p-4 text-center mb-4" tabindex="0" aria-label="Game Code help">
+                        <p class="text-sm" tabindex="0">Game Code:</p>
+                        <h2 id="game-code" class="text-4xl font-bold tracking-widest" aria-label="Código del juego: 1054334" role="status" tabindex="0">
+                            1054334
+                        </h2>
+                        <p class="text-xs mt-1" tabindex="0">Use this to share the game with others.</p>
+                    </div>
+                    <div class="tooltip-content" tabindex="0">
+                        <strong>Game Access Code</strong><br>
+                        This unique code identifies your game session. Students can:<br><br>
+                        • Enter this code on the main page<br>
+                        • Join your game session instantly<br>
+                        • Access from any device<br><br>
+                        <strong>Tip:</strong> Code remains active during the entire session.
+                    </div>
+                </div>
+                <p id="game-instruction" class="card-subtitle" tabindex="0">Instruction: Say the two possible forms.</p>
+                <div class="grid grid-cols-1 gap-3">
+                    <button id="play-button" class="btn btn-danger btn-lg" tabindex="0">Play</button>
+                    <button class="btn btn-info btn-lg" onclick="window.location.href='study.html'" tabindex="0">Study</button>
+                    <button class="btn btn-lg" style="background-color: var(--bam-pink); color: white;" tabindex="0">Slideshow</button>
+                    <button class="btn btn-edit" onclick="window.location.href='edit.html'" tabindex="0">Edit</button>
+                    <button id="share-button" class="btn btn-primary btn-lg" tabindex="0">Share</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" tabindex="0">
+            <div class="card-body">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-2" tabindex="0" aria-label="User info">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"></svg>
+                        <span class="font-bold" tabindex="0">Jane Doe</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="btn btn-icon btn-sm hover:text-bam-purple" aria-label="Edit" tabindex="0">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"></svg>
+                        </button>
+                        <button class="btn btn-icon btn-sm hover:text-bam-purple" aria-label="Favorite" tabindex="0">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"></svg>
+                        </button>
+                        <button class="btn btn-icon btn-sm hover:text-bam-purple" aria-label="View" tabindex="0">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"></svg>
+                        </button>
+                        <button class="btn btn-icon btn-sm hover:text-bam-red" aria-label="Delete" tabindex="0">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"></svg>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-1 text-bam-dark" tabindex="0" aria-label="Score">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"></svg>
+                        <span tabindex="0">123</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div class="lg:col-span-2">
+        <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-2">
+                <h2 class="text-2xl font-bold" tabindex="0">What you will see in this game:</h2>
+                <div class="help-tooltip tooltip-right" tabindex="0" aria-label="Question Preview help">
+                    <div class="help-circle" aria-hidden="true">?</div>
+                    <div class="tooltip-content" tabindex="0">
+                        <strong>Question Preview</strong><br>
+                        These are the cards that will be in the game. Here you can familiarize with them before playing.<br><br>
+                        <strong>How to use:</strong><br>
+                        • Click on any card to see the answer<br>
+                        • Use "Show/Hide" buttons to reveal all answers<br>
+                        • Each card has a score (default 15 points)
+                    </div>
+                </div>
+            </div>
+            <div class="bg-bam-green-dark text-bam-dark rounded-lg p-3 text-center" tabindex="0">
+                <p class="text-sm font-bold mb-2" tabindex="0">Press Show to see all the answers.</p>
+                <div class="flex space-x-2 justify-center">
+                    <div class="help-tooltip tooltip-left" tabindex="0" aria-label="Show all answers help">
+                        <button class="showBtn btn btn-sm bg-accessible-yellow" tabindex="0">Show</button>
+                        <div class="tooltip-content" tabindex="0">
+                            <strong>Show All</strong><br>
+                            Reveals all answers at once for quick review.
+                        </div>
+                    </div>
+                    <div class="help-tooltip tooltip-left" tabindex="0" aria-label="Hide all answers help">
+                        <button class="hideBtn btn btn-sm bg-accessible-blue" tabindex="0">Hide</button>
+                        <div class="tooltip-content" tabindex="0">
+                            <strong>Hide All</strong><br>
+                            Hides all visible answers to return to the initial state.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="card-subtitle" tabindex="0">These are the cards that will be in the game, here you can familiarize with them. Each one of them has a score (by default it's 15).</p>
+        <div class="grid-responsive cols-2" id="game-cards" tabindex="0" aria-label="Game cards area">
+
+            <!-- Tarjeta 1 -->
+            <div class="card study-card preview-card" data-question-index="1" tabindex="0" aria-label="Pregunta 1">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">1. I didn't even bother ____ (ask).</p>
+                    <div id="answer-1" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">I didn't even bother TO ASK / ASKING.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="1"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-1"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card study-card preview-card" data-question-index="2" tabindex="0" aria-label="Pregunta 2">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">2. I hate ____ (do) the dishes!</p>
+                    <div id="answer-2" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">I hate TO DO / DOING the dishes!</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="2"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-2"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card study-card preview-card" data-question-index="3" tabindex="0" aria-label="Pregunta 3">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">3. I prefer ____ (work) in teams.</p>
+                    <div id="answer-3" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">I prefer TO WORK / WORKING in teams.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="3"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-3"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="card study-card preview-card" data-question-index="4" tabindex="0" aria-label="Pregunta 4">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">4. We can't continue ____ (ignore) the Earth's issues.</p>
+                    <div id="answer-4" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">We can't continue TO IGNORE / IGNORING the Earth's issues.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="4"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-4"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div class="card study-card preview-card" data-question-index="5" tabindex="0" aria-label="Pregunta 5">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">5. Chris likes ____ (go out).</p>
+                    <div id="answer-5" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">Chris likes TO GO OUT / GOING OUT.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="5"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-5"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 6 -->
+            <div class="card study-card preview-card" data-question-index="6" tabindex="0" aria-label="Pregunta 6">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">6. You need to start ____ (study) harder.</p>
+                    <div id="answer-6" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">You need to start TO STUDY / STUDYING harder.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="6"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-6"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 7 -->
+            <div class="card study-card preview-card" data-question-index="7" tabindex="0" aria-label="Pregunta 7">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">7. I can't bear ____ (see) homeless people or animals.</p>
+                    <div id="answer-7" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">I can't bear TO SEE / SEEING homeless people or animals.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="7"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-7"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 8 -->
+            <div class="card study-card preview-card" data-question-index="8" tabindex="0" aria-label="Pregunta 8">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">8. They decided ____ (postpone) the meeting.</p>
+                    <div id="answer-8" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">They decided TO POSTPONE the meeting.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="8"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-8"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 9 -->
+            <div class="card study-card preview-card" data-question-index="9" tabindex="0" aria-label="Pregunta 9">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">9. She enjoys ____ (read) mystery novels.</p>
+                    <div id="answer-9" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">She enjoys READING mystery novels.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="9"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-9"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 10 -->
+            <div class="card study-card preview-card" data-question-index="10" tabindex="0" aria-label="Pregunta 10">
+                <div class="card-body">
+                    <p class="text-lg mb-4 question-text" tabindex="0">10. We hope ____ (visit) Paris next year.</p>
+                    <div id="answer-10" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                        <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
+                        <p class="text-blue-700">We hope TO VISIT Paris next year.</p>
+                    </div>
+                </div>
+                <div class="card-footer flex">
+                    <p class="font-bold text-bam-dark" tabindex="0">Value: 15</p>
+                    <div class="flex items-center space-x-2">
+                        <button
+                                class="btn btn-primary btn-icon toggle-answer-btn"
+                                data-index="10"
+                                title="Ver/Ocultar respuesta"
+                                tabindex="0"
+                                aria-controls="answer-10"
+                                aria-expanded="false"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Botón de atajos fijo abajo a la derecha -->
+<button
+        id="shortcuts-btn"
+        class="fixed bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+        aria-label="Mostrar atajos de teclado"
+        tabindex="0"
+>
+    Presiona aquí para ver los atajos
+</button>
+
+
+<div id="play-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog" aria-label="Choose Game Type">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <div class="flex justify-between items-center">
+                <h2 class="modal-title text-2xl font-bold text-purple-800" tabindex="0">🎮 Choose Your Game Type</h2>
+                <button id="close-play-modal" class="text-gray-500 hover:text-gray-700 text-2xl font-bold" aria-label="Close modal" tabindex="0">&times;</button>
+            </div>
+            <p class="text-gray-600 mt-2" tabindex="0">Select the type of challenge you want to play:</p>
+        </div>
+        <div class="modal-body">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="game-type-card bg-gradient-to-br from-purple-500 to-purple-700 text-white rounded-xl p-6 cursor-pointer hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl"
+                     data-game-type="text"
+                     data-url="game-board.html"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Select Text Challenge game mode">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4" tabindex="0">📝</div>
+                        <h4 class="font-bold text-xl mb-2" tabindex="0">Text Challenge</h4>
+                        <p class="text-sm opacity-90 mb-4" tabindex="0">Classic question & answer format</p>
+                        <div class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold" tabindex="0">
+                            Play Traditional Mode
+                        </div>
+                    </div>
+                </div>
+                <div class="game-type-card bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-xl p-6 cursor-pointer hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl"
+                     data-game-type="video"
+                     data-url="video-game-board.html"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Select Video Challenge game mode">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4" tabindex="0">🎬</div>
+                        <h4 class="font-bold text-xl mb-2" tabindex="0">Video Challenge</h4>
+                        <p class="text-sm opacity-90 mb-4" tabindex="0">Interactive multimedia learning</p>
+                        <div class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold" tabindex="0">
+                            Play Media Mode
+                        </div>
+                    </div>
+                </div>
+                <div class="game-type-card bg-gradient-to-br from-blue-500 to-teal-500 text-white rounded-xl p-6 cursor-pointer hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl"
+                     data-game-type="image"
+                     data-url="image-game-board.html"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Select Visual Discovery game mode">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4" tabindex="0">🖼️</div>
+                        <h4 class="font-bold text-xl mb-2" tabindex="0">Visual Discovery</h4>
+                        <p class="text-sm opacity-90 mb-4" tabindex="0">Image analysis & observation</p>
+                        <div class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold" tabindex="0">
+                            Play Visual Mode
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg" tabindex="0">
+                <h5 class="font-bold text-blue-800 mb-3" tabindex="0">💡 Choose the Perfect Mode for Your Learning:</h5>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-blue-700">
+                    <div class="bg-white p-3 rounded-lg shadow-sm" tabindex="0">
+                        <div class="font-bold text-purple-600 mb-1" tabindex="0">📝 Text Challenge</div>
+                        <p tabindex="0">Perfect for vocabulary, concepts, and traditional Q&A learning</p>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm" tabindex="0">
+                        <div class="font-bold text-purple-600 mb-1" tabindex="0">🎬 Video Challenge</div>
+                        <p tabindex="0">Great for demonstrations, storytelling, and contextual learning</p>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm" tabindex="0">
+                        <div class="font-bold text-blue-600 mb-1" tabindex="0">🖼️ Visual Discovery</div>
+                        <p tabindex="0">Ideal for art, science observations, and visual analysis skills</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-gray-50 rounded-lg" tabindex="0">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+                    <div tabindex="0">
+                        <div class="font-bold text-lg text-purple-600" tabindex="0">10</div>
+                        <div class="text-gray-600" tabindex="0">Questions</div>
+                    </div>
+                    <div tabindex="0">
+                        <div class="font-bold text-lg text-blue-600" tabindex="0">15</div>
+                        <div class="text-gray-600" tabindex="0">Points Each</div>
+                    </div>
+                    <div tabindex="0">
+                        <div class="font-bold text-lg text-green-600" tabindex="0">2</div>
+                        <div class="text-gray-600" tabindex="0">Teams</div>
+                    </div>
+                    <div tabindex="0">
+                        <div class="font-bold text-lg text-orange-600" tabindex="0">5-15</div>
+                        <div class="text-gray-600" tabindex="0">Minutes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="close-play-modal-footer" tabindex="0">Cancel</button>
+            <button class="btn btn-info" tabindex="0">Preview Questions</button>
+        </div>
+    </div>
+</div>
+<div id="share-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog" aria-label="Share Modal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title" tabindex="0">Share The Verb Journey</h2>
+        </div>
+        <div class="modal-body">
+            <div class="input-with-icon">
+                <label for="share-link" class="sr-only">Enlace para compartir el juego</label>
+                <input id="share-link" type="text" readonly value="https://www.baamboozle.com/game/1054334" class="form-input" tabindex="0">
+                <button class="input-icon text-gray-500 hover:text-gray-800" aria-label="Copiar enlace" tabindex="0">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"></svg>
+                </button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="close-share-modal" class="btn btn-primary" tabindex="0">Close</button>
+        </div>
+    </div>
+</div>
+<div id="mobile-menu" class="mobile-menu" tabindex="0" aria-modal="true" role="dialog" aria-label="Mobile Menu">
+    <button id="close-menu-btn" class="mobile-menu-close" aria-label="Close mobile menu" tabindex="0">&times;</button>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+        <a href="#" class="mobile-menu-link" tabindex="0">Games</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Blog</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Class PIN</a>
+        <hr class="border-gray-600 my-4"/>
+        <a href="#" class="mobile-menu-link" tabindex="0">Sign in</a>
+        <a href="#" class="btn btn-primary btn-rounded text-center" tabindex="0">Join for Free</a>
+    </nav>
+</div>
+
+
+<div
+        id="shortcuts-modal"
+        class="hidden modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 "
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shortcuts-title"
+        style="overflow: hidden; display: none !important;"
+>
+    <div
+            class="modal bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden "
+            role="document"
+    >
+        <!-- Header -->
+        <div class="modal-header relative px-6 pt-6 pb-4 border-b border-gray-200">
+            <h2
+                    id="shortcuts-title"
+                    class="text-2xl font-bold text-purple-600"
+                    tabindex="0"
+            >
+                Atajos de Teclado
+            </h2>
+            <button
+                    class="modal-close absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring focus:ring-purple-300"
+                    aria-label="Cerrar atajos"
+                    tabindex="0"
+            >&times;</button>
+        </div>
+
+        <!-- Body (sólo aquí se scrolling) -->
+        <div class="modal-body px-6 py-4 max-h-[70vh]" style="overflow: auto;">
+            <!-- Sección Globales -->
+            <div>
+                <h3 class="text-xl font-semibold text-purple-600 mb-2" tabindex="0">
+                    Atajos Globales
+                </h3>
+                <div class="divide-y divide-gray-200">
+                    <!-- Item -->
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+H
+            </span>
+                        <span class="text-gray-700">Mostrar ayuda de atajos</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+M
+            </span>
+                        <span class="text-gray-700">Alternar menú móvil</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Escape
+            </span>
+                        <span class="text-gray-700">Cerrar modal/menú</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+1
+            </span>
+                        <span class="text-gray-700">Ir a página principal</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+←
+            </span>
+                        <span class="text-gray-700">Volver atrás</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              F1
+            </span>
+                        <span class="text-gray-700">Ayuda</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Juego Principal -->
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-purple-600 mb-2" tabindex="0">
+                    Juego Principal
+                </h3>
+                <div class="divide-y divide-gray-200">
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+P
+            </span>
+                        <span class="text-gray-700">Jugar</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+S
+            </span>
+                        <span class="text-gray-700">Modo estudio</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+E
+            </span>
+                        <span class="text-gray-700">Editar juego</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Alt+R
+            </span>
+                        <span class="text-gray-700">Compartir juego</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Space
+            </span>
+                        <span class="text-gray-700">Mostrar/ocultar respuestas</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              ↑ ↓ ← →
+            </span>
+                        <span class="text-gray-700">Navegar entre tarjetas</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2" tabindex="0">
+            <span class="btn btn-outline btn-sm focus:ring focus:ring-purple-300">
+              Enter
+            </span>
+                        <span class="text-gray-700">Mostrar/ocultar respuesta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Game Board - Bamboozle</title>
+
+    <!-- CSS -->
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/image-game.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+</head>
+<body class="min-h-screen">
+
+<!-- Skip link -->
+<a href="#main-content" class="skip-to-content" tabindex="0">Saltar al contenido principal</a>
+<div id="sr-live-region" class="sr-live-region" aria-live="polite" aria-atomic="true" tabindex="0"></div>
+
+<!-- Navegación -->
+<header class="header" role="banner">
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="flex items-center space-x-8">
+            <a href="game-main.html" class="nav-brand hover:opacity-70" aria-label="Ir a la página principal" tabindex="0">
+                <span class="sr-only">Ir a la página principal</span>
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" focusable="false">
+                    <path d="M2.12499 15.8749H3.49999V25.4999C3.49999 27.0124 4.73749 28.2499 6.24999 28.2499H22.75C24.2625 28.2499 25.5 27.0124 25.5 25.4999V15.8749H26.875C27.425 15.8749 27.9337 15.5449 28.14 15.0224C28.3462 14.5137 28.2362 13.9224 27.8375 13.5237L15.4762 1.14869C15.349 1.02123 15.1979 0.920097 15.0316 0.851098C14.8653 0.782098 14.6869 0.746582 14.5069 0.746582C14.3268 0.746582 14.1485 0.782098 13.9821 0.851098C13.8158 0.920097 13.6647 1.02123 13.5375 1.14869L1.14874 13.5237C0.749992 13.9224 0.639992 14.5137 0.846242 15.0224C1.05249 15.5312 1.56124 15.8749 2.11124 15.8749H2.12499ZM14.5 4.06369L22.75 12.3137V25.4999H6.24999V12.3137L14.5 4.06369Z" fill="#ECECEC"/>
+                </svg>
+            </a>
+            <div class="nav-links" role="menu">
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Games</a>
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Blog</a>
+                <a href="#" class="nav-link" role="menuitem" tabindex="0">Class PIN</a>
+            </div>
+        </div>
+        <div class="nav-links" role="menu">
+            <a href="#" class="nav-link" role="menuitem" tabindex="0">Sign in</a>
+            <a href="#" class="btn btn-rounded bg-accessible-blue" style="color:#fff;" role="button" tabindex="0">
+                Join for Free
+            </a>
+        </div>
+        <button id="hamburger-btn" class="hamburger" aria-label="Abrir menú móvil" role="button" tabindex="0">☰</button>
+    </nav>
+</header>
+
+<!-- Controles Superior -->
+<div class="bg-gradient-to-r from-blue-600 to-teal-600 text-white py-4 px-6"
+     role="region" aria-label="Controles del juego">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+        <div class="flex items-center space-x-2 justify-center md:justify-start">
+            <span class="font-bold" tabindex="0">Controls:</span>
+            <button class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    onclick="window.location.href='game-main.html'"
+                    aria-label="Salir" role="button" tabindex="0">&times;
+            </button>
+            <button id="zoom-toggle" class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    aria-label="Modo zoom" title="Zoom mode" role="button" tabindex="0">🔍
+            </button>
+            <button id="fullscreen-toggle" class="btn btn-icon btn-sm bg-white/20 hover:bg-white/30"
+                    aria-label="Pantalla completa" title="Pantalla completa" role="button" tabindex="0">🖼️
+            </button>
+        </div>
+        <div class="text-center">
+            <h1 class="text-4xl font-bold" tabindex="0">🖼️ Visual Discovery</h1>
+            <p id="game-title" class="font-semibold" tabindex="0">Interactive Image Learning Challenge</p>
+        </div>
+        <div class="text-center md:text-right">
+            <div class="text-sm bg-white/20 px-4 py-2 rounded-lg" tabindex="0">
+                <div>Images revealed: <span id="images-revealed">0</span>/10</div>
+                <div>Questions left: <span id="questions-left">10</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Puntuaciones -->
+<div class="bg-gradient-to-r from-blue-700 to-teal-700 text-white py-4 px-6"
+     role="region" aria-label="Marcador de equipos">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+        <div class="flex items-center justify-center md:justify-start space-x-2">
+            <span class="font-bold" tabindex="0">Edit teams:</span>
+            <button class="btn btn-icon btn-sm hover:bg-white/20"
+                    aria-label="Editar equipos" role="button" tabindex="0">
+                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793z
+                     M11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="flex justify-center items-end space-x-8">
+            <div id="team1-container" class="text-center" aria-live="polite">
+                <div class="bg-emerald-400 text-gray-800 px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team1-name">Team 1</span>
+                </div>
+                <div class="font-bold text-3xl text-emerald-200" tabindex="0">
+                    <span id="team1-score">0 points</span>
+                </div>
+            </div>
+            <div id="team2-container" class="text-center" aria-live="polite">
+                <div class="bg-cyan-400 text-gray-800 px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team2-name">Team 2</span>
+                </div>
+                <div class="font-bold text-3xl text-emerald-200" tabindex="0">
+                    <span id="team2-score">0 points</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center md:justify-end space-x-2">
+            <button id="hint-mode" class="btn btn-sm bg-white/20 hover:bg-white/30 text-white"
+                    aria-label="Modo pista" role="button" tabindex="0">💡 Hint Mode
+            </button>
+            <button id="gallery-view" class="btn btn-sm bg-white/20 hover:bg-white/30 text-white"
+                    aria-label="Ver galería" role="button" tabindex="0">🖼️ Gallery
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Tablero de Imágenes -->
+<main id="main-content" role="main"
+      class="bg-gradient-to-b from-blue-50 to-teal-50 p-4 md:p-8 min-h-screen">
+    <div class="container">
+        <div class="text-center mb-6">
+            <p class="text-gray-700 mb-2 text-lg" tabindex="0">
+                Current turn: <span id="current-team" class="font-bold text-blue-600">Team 1</span>
+            </p>
+            <p class="text-gray-600 mb-4" tabindex="0">
+                🖼️ Click on an image to reveal it and answer the question!
+            </p>
+            <div class="flex justify-center space-x-4 flex-wrap gap-2">
+                <button id="restart-button" class="btn btn-danger"
+                        onclick="window.location.href='visual-discovery.html'"
+                        aria-label="Reiniciar juego" role="button" tabindex="0">
+                    🔄 Restart Game
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='../index.html'"
+                        aria-label="Volver a configuración" role="button" tabindex="0">
+                    ⬅️ Back to Setup
+                </button>
+            </div>
+        </div>
+
+        <div id="image-game-board" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- 10 tarjetas estáticas -->
+            <div role="button" tabindex="0"
+                 aria-label="Image 1: Nature Scene (15 puntos)"
+                 data-tile="1"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Nature Scene</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 2: City Skyline (15 puntos)"
+                 data-tile="2"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">City Skyline</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 3: Mountain View (15 puntos)"
+                 data-tile="3"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Mountain View</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 4: Tropical Beach (15 puntos)"
+                 data-tile="4"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Tropical Beach</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 5: Desert Landscape (15 puntos)"
+                 data-tile="5"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Desert Landscape</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 6: Forest Path (15 puntos)"
+                 data-tile="6"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Forest Path</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 7: Underwater Reef (15 puntos)"
+                 data-tile="7"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Underwater Reef</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 8: Snowy Mountain (15 puntos)"
+                 data-tile="8"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Snowy Mountain</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 9: Autumn Leaves (15 puntos)"
+                 data-tile="9"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Autumn Leaves</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+            <div role="button" tabindex="0"
+                 aria-label="Image 10: Starry Night (15 puntos)"
+                 data-tile="10"
+                 class="bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl p-6 text-white shadow-lg
+                    hover:shadow-xl min-h-[200px] flex flex-col items-center justify-center
+                    transition-all hover:scale-105">
+                <div class="text-6xl mb-4" aria-hidden="true">🖼️</div>
+                <h3 class="font-bold text-xl mb-2 text-center">Starry Night</h3>
+                <p class="text-sm opacity-90 text-center mb-4">Click to reveal</p>
+                <div class="bg-white/20 px-3 py-1 rounded-full">
+                    <span class="text-sm font-bold">15 pts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading-images" class="text-center py-8 hidden" aria-hidden="true">
+            <div class="loading-spinner mx-auto mb-4" aria-hidden="true"></div>
+            <p class="text-gray-600" tabindex="0">Loading images...</p>
+        </div>
+    </div>
+</main>
+
+<!-- Gallery Modal -->
+<div id="gallery-modal" class="modal-backdrop hidden"
+     role="dialog" aria-modal="true" aria-labelledby="gallery-modal-title" tabindex="-1">
+    <div class="modal modal-lg">
+        <div class="modal-header bg-gradient-to-r from-blue-600 to-teal-600 text-white">
+            <h3 id="gallery-modal-title" class="modal-title text-white" tabindex="0">🖼️ Image Gallery</h3>
+            <button class="modal-close text-white hover:text-gray-300"
+                    aria-label="Cerrar galería" tabindex="0">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Galería dinámica -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary close-modal-btn"
+                    aria-label="Cerrar galería" tabindex="0">Close Gallery</button>
+        </div>
+    </div>
+</div>
+
+<!-- Instructions Modal -->
+<div id="instructions-modal" class="modal-backdrop hidden"
+     role="dialog" aria-modal="true" aria-labelledby="instructions-title" tabindex="-1">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 id="instructions-title" class="modal-title" tabindex="0">🖼️ How to Play - Visual Discovery</h3>
+            <button class="modal-close" aria-label="Cerrar instrucciones" tabindex="0">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg" tabindex="0">
+                    <h4 class="font-bold text-blue-800 mb-2">🎯 Objective:</h4>
+                    <p>Look at images carefully and answer questions to earn points for your team!</p>
+                </div>
+                <div class="bg-teal-50 p-4 rounded-lg" tabindex="0">
+                    <h4 class="font-bold text-teal-800 mb-2">📋 How to Play:</h4>
+                    <ol class="list-decimal list-inside space-y-1">
+                        <li>Click on an image tile to reveal the picture</li>
+                        <li>Study the image carefully</li>
+                        <li>Use zoom controls if needed (🔍+, 🔍-, ↻)</li>
+                        <li>Read the question about the image</li>
+                        <li>Discuss with your team</li>
+                        <li>Click "Show Answer" when ready</li>
+                        <li>Mark if your answer was correct or not</li>
+                    </ol>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-lg" tabindex="0">
+                    <h4 class="font-bold text-emerald-800 mb-2">🏆 Scoring:</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Correct answer: +15 points</li>
+                        <li>Incorrect answer: 0 points</li>
+                        <li>Team with most points wins!</li>
+                    </ul>
+                </div>
+                <div class="bg-cyan-50 p-4 rounded-lg" tabindex="0">
+                    <h4 class="font-bold text-cyan-800 mb-2">💡 Tips:</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Use the zoom controls to see details</li>
+                        <li>Look for patterns, colors, and objects</li>
+                        <li>Pay attention to background elements</li>
+                        <li>Use "Gallery" to see all revealed images</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary close-modal-btn"
+                    aria-label="Entendido" tabindex="0">Got it!</button>
+        </div>
+    </div>
+</div>
+
+<!-- Menú móvil -->
+<div id="mobile-menu" class="mobile-menu"
+     role="dialog" aria-modal="true" aria-label="Menú móvil" tabindex="0">
+    <button id="close-menu-btn" class="mobile-menu-close"
+            aria-label="Cerrar menú móvil" tabindex="0">&times;</button>
+    <nav class="mobile-menu-links" role="navigation" aria-label="Enlaces menú móvil" tabindex="0">
+        <a href="#" class="mobile-menu-link" tabindex="0">Games</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Blog</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Class PIN</a>
+        <hr class="border-gray-600 my-4" tabindex="0"/>
+        <a href="#" class="mobile-menu-link" tabindex="0">Sign in</a>
+        <a href="#" class="btn btn-primary btn-rounded text-center"
+           role="button" tabindex="0">Join for Free</a>
+    </nav>
+</div>
+
+<!-- Image Question Modal -->
+<div id="image-question-modal"
+     class="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-black bg-opacity-50 p-4"
+     role="dialog" aria-modal="true" aria-labelledby="image-question-title"
+     style="display: none !important;" tabindex="-1">
+    <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+         role="document">
+        <header class="flex items-center justify-between bg-gradient-to-r from-blue-600 to-teal-600 text-white px-6 py-4">
+            <h2 id="image-question-title" class="flex items-center gap-2 text-2xl font-bold" tabindex="0">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 5v14l16-7z"/>
+                </svg>
+                Nature Scene — Team 1
+            </h2>
+        </header>
+        <div class="p-6 space-y-6">
+            <div class="bg-gray-100 rounded-lg overflow-hidden">
+                <img id="modal-image"
+                     src="path/to/nature-scene.jpg"
+                     alt="Nature Scene"
+                     class="w-full h-auto"
+                     tabindex="0">
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button id="zoom-in-btn"
+                        class="btn btn-sm bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        aria-label="Acercar imagen" tabindex="0">🔍+</button>
+                <button id="zoom-out-btn"
+                        class="btn btn-sm bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        aria-label="Alejar imagen" tabindex="0">🔍−</button>
+                <button id="zoom-reset-btn"
+                        class="btn btn-sm bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        aria-label="Restablecer zoom" tabindex="0">↻</button>
+            </div>
+            <section aria-labelledby="image-question-label" tabindex="0">
+                <h3 id="image-question-label" class="text-xl font-semibold text-blue-800 mb-2">
+                    What do you see in this image?
+                </h3>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <p id="image-question-text" class="text-gray-800">
+                        What is the main element in the center of this mountain landscape?
+                    </p>
+                </div>
+            </section>
+            <div class="text-center">
+                <button id="show-image-answer-btn"
+                        class="mt-4 btn btn-primary btn-lg inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                        aria-expanded="false" tabindex="0">
+                    🎯 Show Answer
+                </button>
+            </div>
+            <section id="image-answer-section" class="hidden space-y-4" aria-hidden="true" tabindex="-1">
+                <h4 class="text-xl font-bold text-green-800" tabindex="0">Correct Answer:</h4>
+                <div class="bg-green-50 p-4 rounded-lg" tabindex="0">
+                    <p id="image-answer-text" class="text-green-800">
+                        A high mountain peak rising above a sea of clouds.
+                    </p>
+                </div>
+                <div class="flex justify-center gap-4">
+                    <button id="image-correct-btn"
+                            class="btn btn-success btn-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                            tabindex="0">✅ Correct (+15 pts)
+                    </button>
+                    <button id="image-incorrect-btn"
+                            class="btn btn-danger btn-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                            tabindex="0">❌ Incorrect (0 pts)
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script src="../js/visual-discovery.js"></script>
+
+</body>
+</html>

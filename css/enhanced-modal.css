@@ -1,0 +1,278 @@
+/* ============================================
+   ENHANCED MODAL STYLES
+   Archivo: css/enhanced-modal.css
+   ============================================ */
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--bam-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   GAME TYPE CARDS
+   ============================================ */
+.game-type-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.game-type-card:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.game-type-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.game-type-card:hover::before {
+    left: 100%;
+}
+
+/* Efectos adicionales para las tarjetas */
+.game-type-card:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   LOADING BAR ANIMATION
+   ============================================ */
+.loading-bar {
+    transition: width 3s ease-in-out;
+}
+
+/* ============================================
+   MODAL ENHANCEMENTS
+   ============================================ */
+#play-modal .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#play-modal .modal-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .game-type-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .game-type-card .text-5xl {
+        font-size: 3rem;
+    }
+    
+    .game-type-card h4 {
+        font-size: 1.25rem;
+    }
+    
+    .game-type-card p {
+        font-size: 0.875rem;
+    }
+    
+    /* Ajustar grid en móviles */
+    .grid.grid-cols-1.md\\:grid-cols-3 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Modal más pequeño en móviles */
+    #play-modal .modal {
+        margin: 0.5rem;
+        max-height: 95vh;
+    }
+    
+    /* Transición modal más pequeño en móviles */
+    .transition-modal .modal {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .transition-modal .text-8xl {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Stack information cards vertically on small screens */
+    .grid.grid-cols-1.md\\:grid-cols-3.gap-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust statistics grid */
+    .grid.grid-cols-2.md\\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   HOVER EFFECTS FOR DESKTOP
+   ============================================ */
+@media (hover: hover) and (pointer: fine) {
+    .game-type-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .game-type-card:hover .text-5xl {
+        animation: bounce 0.5s ease;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    80% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.game-type-card[tabindex="0"]:focus {
+    outline: 3px solid var(--bam-purple);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .game-type-card {
+        border: 2px solid;
+    }
+    
+    .loading-spinner {
+        border-top-color: #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .game-type-card,
+    .loading-spinner,
+    .loading-bar,
+    .game-type-card::before {
+        animation: none;
+        transition: none;
+    }
+    
+    .game-type-card:hover {
+        transform: none;
+    }
+}
+
+/* ============================================
+   COLOR THEMES FOR GAME TYPES
+   ============================================ */
+.game-type-card.theme-text {
+    background: linear-gradient(135deg, var(--bam-purple) 0%, var(--bam-purple-dark) 100%);
+}
+
+.game-type-card.theme-video {
+    background: linear-gradient(135deg, #6366f1 0%, var(--bam-purple) 100%);
+}
+
+.game-type-card.theme-image {
+    background: linear-gradient(135deg, var(--bam-blue) 0%, var(--bam-cyan) 100%);
+}
+
+/* ============================================
+   MODAL BACKDROP IMPROVEMENTS
+   ============================================ */
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   ANIMATION ENHANCEMENTS
+   ============================================ */
+.modal.modal-lg {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.transition-all-300 {
+    transition: all 0.3s ease;
+}
+
+.shadow-game-card {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.shadow-game-card-hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ============================================
+   DARK MODE SUPPORT (OPCIONAL)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .modal {
+        background-color: #1f2937;
+        color: white;
+    }
+    
+    .bg-blue-50 {
+        background-color: #1e3a8a;
+    }
+    
+    .bg-gray-50 {
+        background-color: #374151;
+    }
+    
+    .text-gray-600 {
+        color: #d1d5db;
+    }
+    
+    .text-gray-500 {
+        color: #9ca3af;
+    }
+}

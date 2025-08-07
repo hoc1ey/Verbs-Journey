@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Game Board - Bamboozle</title>
+    <!-- CSS -->
+    <link href="../css/base.css" rel="stylesheet"/>
+    <link href="../css/components.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="../img/logo.png"/>
+</head>
+<body class="min-h-screen">
+
+<!-- Skip link -->
+<a href="#main-content" class="skip-to-content" tabindex="0">Saltar al contenido principal</a>
+<!-- Live region -->
+<div id="sr-live-region"
+     class="sr-live-region"
+     aria-live="polite"
+     aria-atomic="true"
+     tabindex="0">
+</div>
+
+<!-- Navegación -->
+<header class="header" role="banner">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="flex items-center space-x-8">
+            <a href="game-main.html"
+               class="nav-brand hover:opacity-70"
+               aria-label="Ir a la página principal"
+               tabindex="0">
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none"
+                     xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" focusable="false">
+                    <path d="M2.12499 15.8749H3.49999V25.4999C3.49999 27.0124 4.73749 28.2499 6.24999 28.2499H22.75C24.2625 28.2499 25.5 27.0124 25.5 25.4999V15.8749H26.875C27.425 15.8749 27.9337 15.5449 28.14 15.0224C28.3462 14.5137 28.2362 13.9224 27.8375 13.5237L15.4762 1.14869C15.349 1.02123 15.1979 0.920097 15.0316 0.851098C14.8653 0.782098 14.6869 0.746582 14.5069 0.746582C14.3268 0.746582 14.1485 0.782098 13.9821 0.851098C13.8158 0.920097 13.6647 1.02123 13.5375 1.14869L1.14874 13.5237C0.749992 13.9224 0.639992 14.5137 0.846242 15.0224C1.05249 15.5312 1.56124 15.8749 2.11124 15.8749H2.12499ZM14.5 4.06369L22.75 12.3137V25.4999H6.24999V12.3137L14.5 4.06369Z"
+                          fill="#ECECEC"/>
+                </svg>
+            </a>
+
+            <div class="nav-links" role="navigation" aria-label="Enlaces de sitio">
+                <a href="#" class="nav-link" tabindex="0">Games</a>
+                <a href="#" class="nav-link" tabindex="0">Blog</a>
+                <a href="#" class="nav-link" tabindex="0">Class PIN</a>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="#" class="nav-link" tabindex="0">Sign in</a>
+            <a href="#" class="btn btn-rounded bg-accessible-blue"
+               style="color: #fff; opacity: 1;"
+               tabindex="0"
+               aria-label="Registrarse gratis">
+                Join for Free
+            </a>
+        </div>
+
+        <button id="hamburger-btn"
+                class="hamburger"
+                aria-label="Abrir menú móvil"
+                tabindex="0">
+            ☰
+        </button>
+    </nav>
+</header>
+
+<!-- Controles superior -->
+<div class="bg-bam-yellow-darker text-bam-dark py-4 px-6" role="region" aria-label="Controles del juego">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+
+        <!-- Controls -->
+        <div class="flex items-center space-x-2 justify-center md:justify-start" tabindex="0">
+            <span class="font-bold">Controls:</span>
+            <button class="btn btn-icon btn-sm bg-white/50 hover:bg-white/70"
+                    aria-label="Cerrar juego"
+                    onclick="window.location.href='game-main.html'"
+                    tabindex="0">
+                &times;
+            </button>
+            <button class="btn btn-icon btn-sm bg-white/50 hover:bg-white/70"
+                    id="sound-toggle"
+                    aria-pressed="false"
+                    aria-label="Activar o desactivar sonido"
+                    tabindex="0">
+                🔊
+            </button>
+        </div>
+
+        <!-- Título -->
+        <div class="text-center" tabindex="0">
+            <h1 class="text-4xl font-bold" tabindex="0">Game</h1>
+            <p id="game-title" class="font-semibold" tabindex="0">
+                Verbs followed by gerunds or infinitive (no diff...)
+            </p>
+        </div>
+
+        <!-- Placeholder -->
+        <div class="hidden md:block" tabindex="0"></div>
+    </div>
+</div>
+
+<!-- Puntuaciones -->
+<div class="bg-bam-yellow text-bam-dark py-4 px-6"
+     role="region"
+     aria-label="Puntuaciones de equipos">
+    <div class="container grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+        <div class="flex items-center justify-center md:justify-start space-x-2" tabindex="0">
+            <span class="font-bold">Edit teams:</span>
+            <button class="btn btn-icon btn-sm hover:text-purple-600"
+                    aria-label="Editar equipos"
+                    tabindex="0">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379
+                     5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="flex justify-center items-end space-x-8 col-span-1">
+            <div id="team1-container"
+                 class="text-center ring-4 ring-pink-400"
+                 role="region"
+                 aria-label="Puntuación del equipo 1"
+                 tabindex="0">
+                <div class="bg-bam-pink text-white px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team1-name" tabindex="0">Team 1</span>
+                </div>
+                <div class="font-bold text-3xl" tabindex="0">
+                    <span id="team1-score" tabindex="0">0 points</span>
+                </div>
+            </div>
+
+            <div id="team2-container"
+                 class="text-center"
+                 role="region"
+                 aria-label="Puntuación del equipo 2"
+                 tabindex="0">
+                <div class="bg-bam-blue text-white px-4 py-1 rounded-t-lg font-bold" tabindex="0">
+                    <span id="team2-name" tabindex="0">Team 2</span>
+                </div>
+                <div class="font-bold text-3xl" tabindex="0">
+                    <span id="team2-score" tabindex="0">0 points</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:block" tabindex="0"></div>
+    </div>
+</div>
+
+<!-- Tablero -->
+<main id="main-content" role="main" class="bg-white p-4 md:p-8">
+    <div class="container">
+        <div class="text-center mb-6">
+            <p class="text-gray-600 mb-2" tabindex="0">
+                Current turn:
+                <span id="current-team" class="font-bold" tabindex="0">Team 1</span>
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button id="restart-button"
+                        class="btn btn-danger"
+                        aria-label="Reiniciar juego"
+                        tabindex="0"
+                        onclick="window.location.href='text-challenge.html'">
+                    Restart Game
+                </button>
+                <button class="btn btn-secondary"
+                        aria-label="Volver a configuración"
+                        tabindex="0"
+                        onclick="window.location.href='../index.html'">
+                    Back to Setup
+                </button>
+            </div>
+        </div>
+
+        <div id="game-board"
+             class="grid-responsive cols-5"
+             role="grid"
+             aria-label="Tablero de preguntas">
+            <!-- Las 10 tarjetas -->
+            <!-- Cada tarjeta: -->
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 1"
+                 tabindex="0"
+                 data-tile="1">
+                1
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 2"
+                 tabindex="0"
+                 data-tile="2">
+                2
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 3"
+                 tabindex="0"
+                 data-tile="3">
+                3
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 4"
+                 tabindex="0"
+                 data-tile="4">
+                4
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 5"
+                 tabindex="0"
+                 data-tile="5">
+                5
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 6"
+                 tabindex="0"
+                 data-tile="6">
+                6
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 7"
+                 tabindex="0"
+                 data-tile="7">
+                7
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 8"
+                 tabindex="0"
+                 data-tile="8">
+                8
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 9"
+                 tabindex="0"
+                 data-tile="9">
+                9
+            </div>
+            <div class="game-tile cursor-pointer p-4 rounded-lg shadow hover:shadow-lg transition"
+                 role="button"
+                 aria-label="Pregunta 10"
+                 tabindex="0"
+                 data-tile="10">
+                10
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Menú móvil -->
+<div id="mobile-menu"
+     class="mobile-menu"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Menú móvil"
+     tabindex="0">
+    <button id="close-menu-btn"
+            class="mobile-menu-close"
+            aria-label="Cerrar menú móvil"
+            tabindex="0">
+        &times;
+    </button>
+    <nav class="mobile-menu-links"
+         role="navigation"
+         aria-label="Enlaces menú móvil"
+         tabindex="0">
+        <a href="#" class="mobile-menu-link" tabindex="0">Games</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Blog</a>
+        <a href="#" class="mobile-menu-link" tabindex="0">Class PIN</a>
+        <hr class="border-gray-600 my-4" tabindex="0"/>
+        <a href="#" class="mobile-menu-link" tabindex="0">Sign in</a>
+        <a href="#" class="btn btn-primary btn-rounded text-center" tabindex="0">Join for Free</a>
+    </nav>
+</div>
+
+<!-- Question Modal -->
+<div id="question-modal"
+     class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+     style="display: none !important;"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="question-title">
+    <div class="modal bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden"
+         role="document">
+        <!-- Header -->
+        <div class="modal-header relative px-6 pt-6 pb-4 border-b border-gray-200">
+            <h2 id="question-title"
+                class="text-xl font-bold"
+                tabindex="0">
+                Question for <span id="question-team" tabindex="0">Team 1</span>
+            </h2>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body px-6 py-4 space-y-4">
+            <!-- Texto pregunta -->
+            <div class="bg-gray-100 p-4 rounded-lg" tabindex="0">
+                <p id="question-text" class="font-medium" tabindex="0">
+                    I hate ______ (do) the dishes!
+                </p>
+            </div>
+
+            <!-- Botón Check Answer -->
+            <button id="check-answer-btn"
+                    class="btn btn-primary btn-lg w-full"
+                    tabindex="0"
+                    aria-label="Comprobar respuesta">
+                🔍 Check Answer
+            </button>
+
+            <!-- Sección de respuesta oculta inicialmente -->
+            <div id="answer-section" class="hidden space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg" tabindex="0">
+                    <p class="font-semibold" tabindex="0">Answer:</p>
+                    <p class="text-blue-700" id="answer-text" tabindex="0">
+                        I hate TO DO / DOING the dishes!
+                    </p>
+                </div>
+                <div class="flex justify-center space-x-4">
+                    <button id="correct-btn"
+                            class="btn btn-success btn-lg"
+                            tabindex="0"
+                            aria-label="Respuesta correcta">
+                        ✔ Correct
+                    </button>
+                    <button id="incorrect-btn"
+                            class="btn btn-danger btn-lg"
+                            tabindex="0"
+                            aria-label="Respuesta incorrecta">
+                        ✖ Incorrect
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/text-challenge.js"></script>
+</body>
+</html>
