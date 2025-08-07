@@ -19,7 +19,7 @@
                 <span class="sr-only">Ir a la página principal</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </a>
             <div class="nav-links" role="navigation" aria-label="Site links">
@@ -41,7 +41,10 @@
     <div class="container flex justify-between items-center flex-wrap gap-4">
         <div>
             <h1 id="game-title" class="text-4xl font-bold" tabindex="0">The Verb Journey</h1>
-            <p class="font-semibold" tabindex="0">Verbs followed by gerunds or infinitive (no diff...)</p>
+            <p class="font-semibold" tabindex="0">This page offers interactive games to help you learn English verbs
+                followed by gerunds. Choose from text, video, or image-based challenges. All content is accessible and
+                designed for academic-level practice.
+            </p>
         </div>
     </div>
 </div>
@@ -66,10 +69,12 @@
                 <p class="card-subtitle" tabindex="0">Press the buttons to do something.</p>
             </div>
             <div class="card-body">
-                <div class="help-tooltip tooltip-right" >
-                    <div class="bg-bam-blue text-white rounded-lg p-4 text-center mb-4" tabindex="0" aria-label="Game Code help">
+                <div class="help-tooltip tooltip-right">
+                    <div class="bg-bam-blue text-white rounded-lg p-4 text-center mb-4" tabindex="0"
+                         aria-label="Game Code help">
                         <p class="text-sm" tabindex="0">Game Code:</p>
-                        <h2 id="game-code" class="text-4xl font-bold tracking-widest" aria-label="Código del juego: 1054334" role="status" tabindex="0">
+                        <h2 id="game-code" class="text-4xl font-bold tracking-widest"
+                            aria-label="Código del juego: 1054334" role="status" tabindex="0">
                             1054334
                         </h2>
                         <p class="text-xs mt-1" tabindex="0">Use this to share the game with others.</p>
@@ -86,8 +91,11 @@
                 <p id="game-instruction" class="card-subtitle" tabindex="0">Instruction: Say the two possible forms.</p>
                 <div class="grid grid-cols-1 gap-3">
                     <button id="play-button" class="btn btn-danger btn-lg" tabindex="0">Play</button>
-                    <button class="btn btn-info btn-lg" onclick="window.location.href='study.html'" tabindex="0">Study</button>
-                    <button class="btn btn-lg" style="background-color: var(--bam-pink); color: white;" tabindex="0">Slideshow</button>
+                    <button class="btn btn-info btn-lg" onclick="window.location.href='study.html'" tabindex="0">Study
+                    </button>
+                    <button class="btn btn-lg" style="background-color: var(--bam-pink); color: white;" tabindex="0">
+                        Slideshow
+                    </button>
                     <button class="btn btn-edit" onclick="window.location.href='edit.html'" tabindex="0">Edit</button>
                     <button id="share-button" class="btn btn-primary btn-lg" tabindex="0">Share</button>
                 </div>
@@ -158,14 +166,16 @@
                 </div>
             </div>
         </div>
-        <p class="card-subtitle" tabindex="0">These are the cards that will be in the game, here you can familiarize with them. Each one of them has a score (by default it's 15).</p>
+        <p class="card-subtitle" tabindex="0">These are the cards that will be in the game, here you can familiarize
+            with them. Each one of them has a score (by default it's 15).</p>
         <div class="grid-responsive cols-2" id="game-cards" tabindex="0" aria-label="Game cards area">
 
             <!-- Tarjeta 1 -->
             <div class="card study-card preview-card" data-question-index="1" tabindex="0" aria-label="Pregunta 1">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">1. I didn't even bother ____ (ask).</p>
-                    <div id="answer-1" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-1" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">I didn't even bother TO ASK / ASKING.</p>
                     </div>
@@ -181,9 +191,10 @@
                                 aria-controls="answer-1"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -194,7 +205,8 @@
             <div class="card study-card preview-card" data-question-index="2" tabindex="0" aria-label="Pregunta 2">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">2. I hate ____ (do) the dishes!</p>
-                    <div id="answer-2" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-2" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">I hate TO DO / DOING the dishes!</p>
                     </div>
@@ -210,9 +222,10 @@
                                 aria-controls="answer-2"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -223,7 +236,8 @@
             <div class="card study-card preview-card" data-question-index="3" tabindex="0" aria-label="Pregunta 3">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">3. I prefer ____ (work) in teams.</p>
-                    <div id="answer-3" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-3" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">I prefer TO WORK / WORKING in teams.</p>
                     </div>
@@ -239,9 +253,10 @@
                                 aria-controls="answer-3"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -251,8 +266,10 @@
             <!-- Tarjeta 4 -->
             <div class="card study-card preview-card" data-question-index="4" tabindex="0" aria-label="Pregunta 4">
                 <div class="card-body">
-                    <p class="text-lg mb-4 question-text" tabindex="0">4. We can't continue ____ (ignore) the Earth's issues.</p>
-                    <div id="answer-4" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <p class="text-lg mb-4 question-text" tabindex="0">4. We can't continue ____ (ignore) the Earth's
+                        issues.</p>
+                    <div id="answer-4" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">We can't continue TO IGNORE / IGNORING the Earth's issues.</p>
                     </div>
@@ -268,9 +285,10 @@
                                 aria-controls="answer-4"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -281,7 +299,8 @@
             <div class="card study-card preview-card" data-question-index="5" tabindex="0" aria-label="Pregunta 5">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">5. Chris likes ____ (go out).</p>
-                    <div id="answer-5" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-5" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">Chris likes TO GO OUT / GOING OUT.</p>
                     </div>
@@ -297,9 +316,10 @@
                                 aria-controls="answer-5"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -310,7 +330,8 @@
             <div class="card study-card preview-card" data-question-index="6" tabindex="0" aria-label="Pregunta 6">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">6. You need to start ____ (study) harder.</p>
-                    <div id="answer-6" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-6" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">You need to start TO STUDY / STUDYING harder.</p>
                     </div>
@@ -326,9 +347,10 @@
                                 aria-controls="answer-6"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -338,8 +360,10 @@
             <!-- Tarjeta 7 -->
             <div class="card study-card preview-card" data-question-index="7" tabindex="0" aria-label="Pregunta 7">
                 <div class="card-body">
-                    <p class="text-lg mb-4 question-text" tabindex="0">7. I can't bear ____ (see) homeless people or animals.</p>
-                    <div id="answer-7" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <p class="text-lg mb-4 question-text" tabindex="0">7. I can't bear ____ (see) homeless people or
+                        animals.</p>
+                    <div id="answer-7" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">I can't bear TO SEE / SEEING homeless people or animals.</p>
                     </div>
@@ -355,9 +379,10 @@
                                 aria-controls="answer-7"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -368,7 +393,8 @@
             <div class="card study-card preview-card" data-question-index="8" tabindex="0" aria-label="Pregunta 8">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">8. They decided ____ (postpone) the meeting.</p>
-                    <div id="answer-8" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-8" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">They decided TO POSTPONE the meeting.</p>
                     </div>
@@ -384,9 +410,10 @@
                                 aria-controls="answer-8"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -397,7 +424,8 @@
             <div class="card study-card preview-card" data-question-index="9" tabindex="0" aria-label="Pregunta 9">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">9. She enjoys ____ (read) mystery novels.</p>
-                    <div id="answer-9" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-9" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">She enjoys READING mystery novels.</p>
                     </div>
@@ -413,9 +441,10 @@
                                 aria-controls="answer-9"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -426,7 +455,8 @@
             <div class="card study-card preview-card" data-question-index="10" tabindex="0" aria-label="Pregunta 10">
                 <div class="card-body">
                     <p class="text-lg mb-4 question-text" tabindex="0">10. We hope ____ (visit) Paris next year.</p>
-                    <div id="answer-10" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0" aria-hidden="true">
+                    <div id="answer-10" class="answer-text hidden bg-blue-50 p-3 rounded-lg mt-4" tabindex="0"
+                         aria-hidden="true">
                         <p class="font-semibold text-blue-800 mb-2">Respuesta:</p>
                         <p class="text-blue-700">We hope TO VISIT Paris next year.</p>
                     </div>
@@ -442,9 +472,10 @@
                                 aria-controls="answer-10"
                                 aria-expanded="false"
                         >
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </button>
                     </div>
@@ -465,12 +496,15 @@
 </button>
 
 
-<div id="play-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog" aria-label="Choose Game Type">
+<div id="play-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog"
+     aria-label="Choose Game Type">
     <div class="modal modal-lg">
         <div class="modal-header">
             <div class="flex justify-between items-center">
                 <h2 class="modal-title text-2xl font-bold text-purple-800" tabindex="0">🎮 Choose Your Game Type</h2>
-                <button id="close-play-modal" class="text-gray-500 hover:text-gray-700 text-2xl font-bold" aria-label="Close modal" tabindex="0">&times;</button>
+                <button id="close-play-modal" class="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                        aria-label="Close modal" tabindex="0">&times;
+                </button>
             </div>
             <p class="text-gray-600 mt-2" tabindex="0">Select the type of challenge you want to play:</p>
         </div>
@@ -566,7 +600,8 @@
         </div>
     </div>
 </div>
-<div id="share-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog" aria-label="Share Modal">
+<div id="share-modal" class="modal-backdrop hidden" tabindex="0" aria-modal="true" role="dialog"
+     aria-label="Share Modal">
     <div class="modal">
         <div class="modal-header">
             <h2 class="modal-title" tabindex="0">Share The Verb Journey</h2>
@@ -574,7 +609,8 @@
         <div class="modal-body">
             <div class="input-with-icon">
                 <label for="share-link" class="sr-only">Enlace para compartir el juego</label>
-                <input id="share-link" type="text" readonly value="https://www.baamboozle.com/game/1054334" class="form-input" tabindex="0">
+                <input id="share-link" type="text" readonly value="https://www.baamboozle.com/game/1054334"
+                       class="form-input" tabindex="0">
                 <button class="input-icon text-gray-500 hover:text-gray-800" aria-label="Copiar enlace" tabindex="0">
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"></svg>
                 </button>
@@ -623,7 +659,8 @@
                     class="modal-close absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring focus:ring-purple-300"
                     aria-label="Cerrar atajos"
                     tabindex="0"
-            >&times;</button>
+            >&times;
+            </button>
         </div>
 
         <!-- Body (sólo aquí se scrolling) -->
